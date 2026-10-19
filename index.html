@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<script> /* QA PANEL v3.1 — auditoria embutida. Ativa so com ?qa=1. NAO ALTERAR. */ (function () { if (!/[?&]qa=1/.test(location.search)) return; var errs = []; window.addEventListener('error', function (e) { errs.push(e.message || 'erro'); }); function run() { var d = document, de = d.documentElement; var kf = 0; try { Array.prototype.forEach.call(d.styleSheets, function (s) { Array.prototype.forEach.call(s.cssRules || [], function (r) { if (r.type === CSSRule.KEYFRAMES_RULE) kf++; }); }); } catch (e) {} var rev = d.querySelectorAll('[data-reveal]').length; var ov = de.scrollWidth - de.clientWidth; var culprits = []; if (ov > 0) { Array.prototype.forEach.call(d.querySelectorAll('body *'), function (e) { var b = e.getBoundingClientRect(); if (b.right > de.clientWidth + 1 && b.width > 40) culprits.push(e.tagName.toLowerCase() + (e.className && typeof e.className === 'string' ? '.' + e.className.split(' ')[0] : '')); }); culprits = culprits.slice(0, 3); } var vw = 0; try { Array.prototype.forEach.call(d.styleSheets, function (s) { Array.prototype.forEach.call(s.cssRules || [], function (r) { if (r.style && /\d+vw/.test(r.style.width || '')) vw++; }); }); } catch (e) {} var dead = d.querySelectorAll('a[href="#"], a[href=""]').length; var noalt = Array.prototype.filter.call(d.querySelectorAll('img'), function (i) { return !i.hasAttribute('alt'); }).length; var blank = Array.prototype.filter.call(d.querySelectorAll('a[target="_blank"]'), function (a) { return !(a.rel || '').match(/noopener/); }).length; var small = Array.prototype.filter.call(d.querySelectorAll('a,button'), function (e) { var b = e.getBoundingClientRect(); return b.width > 0 && b.height > 0 && (b.height < 44 || b.width < 44); }).length; var h1 = d.querySelectorAll('h1').length; var rows = [ ['@keyframes >= 6', kf, kf >= 6], ['data-reveal >= 15', rev, rev >= 15], ['overflow-x = 0px', ov + 'px' + (culprits.length ? ' [' + culprits.join(', ') + ']' : ''), ov <= 0], ['regras width:vw', vw, vw === 0], ['links href="#"', dead, dead === 0], ['img sem alt', noalt, noalt === 0], ['_blank sem noopener', blank, blank === 0], ['alvos menores que 44px', small, small === 0], ['h1 unico', h1, h1 === 1], ['erros JS', errs.length, errs.length === 0] ]; var pass = rows.every(function (r) { return r[2]; }); var el = d.getElementById('qa-panel'); if (!el) { el = d.createElement('div'); el.id = 'qa-panel'; d.body.appendChild(el); } el.setAttribute('style', 'position:fixed;bottom:8px;left:8px;z-index:2147483647;background:#101418;color:#fff;font:11px/1.7 monospace;padding:10px 14px;border-radius:8px;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,.4)'); el.innerHTML = '<strong style="color:' + (pass ? '#6BCB77' : '#FF6B6B') + '">QA ' + de.clientWidth + 'px — ' + (pass ? 'PASSOU' : 'FALHOU') + '</strong><br>' + rows.map(function (r) { return '<span style="color:' + (r[2] ? '#6BCB77' : '#FF6B6B') + '">' + (r[2] ? 'OK ' : 'X ') + '</span>' + r[0] + ': ' + r[1]; }).join('<br>'); d.title = (pass ? '[QA OK] ' : '[QA FALHOU] ') + d.title.replace(/^\[QA [^\]]*\] /, ''); } window.addEventListener('load', run); window.addEventListener('resize', run); setInterval(run, 2000); })(); </script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brenno Fidelis — Consultoria online e protocolo personalizado</title>
+<meta name="description" content="Consultoria online com protocolo personalizado para quem está começando agora, para quem treina há meses e não sai do lugar e para quem já tem base e quer subir de nível. Com Brenno Fidelis, atleta de Classic Physique.">
+<meta name="theme-color" content="#15171A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Brenno Fidelis — Consultoria online e protocolo personalizado">
+<meta property="og:description" content="Sua melhor versão. Sem mimimi. Consultoria online com protocolo personalizado.">
+<meta property="og:site_name" content="Brenno Fidelis">
+<!-- SUBSTITUIR: og:url e og:image quando o domínio e a foto oficial existirem -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brenno Fidelis — Consultoria online e protocolo personalizado">
+<meta name="twitter:description" content="Sua melhor versão. Sem mimimi. Consultoria online com protocolo personalizado.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2315171A'/%3E%3Crect x='6' y='6' width='52' height='52' fill='none' stroke='%23D9B23A' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-size='26' font-weight='bold' fill='%23D9B23A' text-anchor='middle'%3EBF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<!-- O CSS do site vem antes da folha do Google Fonts de proposito: o painel de QA percorre document.styleSheets em ordem e uma folha cross-origin interrompe a leitura das regras. -->
+<style>
+/* PALETA PROPOSTA — validar com o Brenno */
+:root{
+  --ferro:#15171A;
+  --giz:#EFEDE8;
+  --placa:#D9B23A;
+  --alca:#7C8187;
+  --gut:20px;
+  --max:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,p,ul,ol,li,figure,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  background:var(--ferro);
+  color:var(--giz);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"Archivo Black","Archivo",system-ui,sans-serif;font-weight:400;text-transform:uppercase;line-height:1.02;letter-spacing:-0.01em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--placa);outline-offset:3px}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+section{scroll-margin-top:24px}
+
+/* ---------- mono / ficha ---------- */
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase}
+.lbl{font-size:12px;font-weight:500;color:var(--alca)}
+.sec-head{padding-top:72px;padding-bottom:28px}
+.sec-num{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;font-weight:700;font-size:13px;color:var(--placa);margin-bottom:14px}
+.sec-title{font-size:30px}
+.rule{height:1px;background:var(--alca);opacity:.4;margin-top:22px;transform-origin:left center}
+
+/* cabeçalho de ficha */
+.ficha-head{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid rgba(124,129,135,.45);border-bottom:1px solid rgba(124,129,135,.45)}
+.ficha-head div{padding:12px 0;border-bottom:1px solid rgba(124,129,135,.22)}
+.ficha-head div:last-child{border-bottom:0}
+.ficha-head dt{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;font-size:11px;color:var(--alca)}
+.ficha-head dd{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--giz);margin-top:4px}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;min-width:200px;padding:14px 26px;
+  background:var(--placa);color:var(--ferro);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;border:0;
+  transition:transform .25s ease,filter .25s ease;
+}
+.btn:hover,.btn:focus-visible{filter:brightness(1.1);transform:translateY(-2px)}
+.btn--dark{background:var(--ferro);color:var(--giz)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:56px;padding-bottom:48px}
+.hero__kicker{font-size:12px;margin-bottom:26px}
+.hero h1{font-size:40px;letter-spacing:-0.02em}
+.hero h1 .hl{color:var(--placa);display:block}
+.hero__sub{margin-top:22px;color:var(--giz);max-width:34em}
+.hero__spec{margin-top:26px;font-size:11px;color:var(--alca);border-top:1px solid rgba(124,129,135,.35);border-bottom:1px solid rgba(124,129,135,.35);padding:12px 0;line-height:1.9}
+.hero__cta{margin-top:28px}
+.hero__shot{margin-top:40px}
+
+/* ---------- fotos ---------- */
+.shot{position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(124,129,135,.45);overflow:hidden;background:#101317}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.8) contrast(1.06)}
+.shot--treino img{object-position:50% 45%}
+.shot::after{content:"";position:absolute;top:10px;left:10px;width:26px;height:26px;border-top:2px solid var(--placa);border-left:2px solid var(--placa);pointer-events:none}
+.shot-cap{
+  display:block;margin-top:10px;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  letter-spacing:.06em;text-transform:uppercase;font-size:11px;color:var(--alca);line-height:1.8;
+}
+
+/* ---------- ficha de avaliação ---------- */
+.opts{display:grid;gap:14px;padding-bottom:16px}
+.opt{
+  display:block;text-decoration:none;
+  border:1px solid rgba(124,129,135,.45);
+  padding:22px 20px 24px;min-height:120px;
+  transition:border-color .25s ease,background-color .25s ease,transform .25s ease;
+}
+.opt:hover,.opt:focus-visible{border-color:var(--placa);background:rgba(217,178,58,.05);transform:translateY(-3px)}
+.opt__row{display:flex;align-items:center;gap:12px}
+.opt__box{flex:0 0 auto;width:20px;height:20px;border:2px solid var(--alca);position:relative;transition:border-color .25s ease}
+.opt__box::after{content:"";position:absolute;inset:3px;background:var(--placa);clip-path:inset(0 100% 0 0);transition:clip-path .3s ease}
+.opt:hover .opt__box,.opt:focus-visible .opt__box{border-color:var(--placa)}
+.opt:hover .opt__box::after,.opt:focus-visible .opt__box::after{clip-path:inset(0 0 0 0)}
+.opt__code{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;font-size:11px;color:var(--alca)}
+.opt h3{font-size:19px;margin-top:14px}
+.opt p{margin-top:10px;color:var(--alca);font-size:16px}
+.opt__go{margin-top:16px;display:inline-block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--placa)}
+
+/* ---------- listas / blocos ---------- */
+.block{border:1px solid rgba(124,129,135,.45);padding:22px 20px}
+.block + .block{margin-top:14px}
+.list li{position:relative;padding-left:22px;padding-top:10px;padding-bottom:10px;border-bottom:1px solid rgba(124,129,135,.22)}
+.list li:last-child{border-bottom:0}
+.list li::before{content:"";position:absolute;left:0;top:21px;width:10px;height:2px;background:var(--placa)}
+.honest{margin-top:20px;font-size:12px;color:var(--alca);line-height:1.9;border-left:2px solid var(--placa);padding:6px 0 6px 14px;text-transform:none;letter-spacing:.04em}
+
+/* ---------- quem monta ---------- */
+.bio{display:grid;gap:26px}
+.bio p{color:var(--giz)}
+.bio p + p{margin-top:14px}
+
+/* ---------- passos ---------- */
+.steps{display:grid;gap:14px;counter-reset:s}
+.step{border:1px solid rgba(124,129,135,.45);padding:22px 20px}
+.step__n{font-family:"IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;font-size:12px;font-weight:700;color:var(--placa)}
+.step h3{font-size:18px;margin-top:12px}
+.step p{margin-top:10px;color:var(--alca);font-size:16px}
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid rgba(124,129,135,.45)}
+.faq details{border-bottom:1px solid rgba(124,129,135,.45)}
+.faq summary{
+  list-style:none;cursor:pointer;min-height:64px;display:flex;align-items:center;gap:14px;
+  padding:16px 0;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";color:var(--placa);font-weight:700;flex:0 0 auto;width:16px}
+.faq details[open] summary::before{content:"–"}
+.faq p{padding:0 0 20px 30px;color:var(--alca);font-size:16px}
+
+/* ---------- cta final ---------- */
+.final{background:var(--placa);color:var(--ferro);margin-top:80px}
+.final .inner{padding-top:64px;padding-bottom:64px}
+.final h2{font-size:28px;max-width:16em}
+.final p{margin-top:16px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#3b3214}
+.final .btn{margin-top:28px}
+
+/* ---------- rodapé ---------- */
+footer{padding-top:48px;padding-bottom:40px;border-top:1px solid rgba(124,129,135,.3)}
+.foot__brand{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--giz)}
+.foot__links{margin-top:18px}
+.foot__links a{
+  display:inline-flex;align-items:center;min-height:48px;min-width:140px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--alca);text-decoration:none;transition:color .25s ease;
+}
+.foot__links a:hover,.foot__links a:focus-visible{color:var(--placa)}
+.foot__legal{margin-top:10px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--alca);line-height:1.9}
+.foot__credit{margin-top:18px}
+.site-credit{display:inline-block;font-size:11px;color:inherit;text-decoration:none;opacity:.3;letter-spacing:.02em;transition:opacity .3s ease;padding:6px 0}
+.site-credit:hover,.site-credit:focus-visible{opacity:.8}
+.site-credit{line-height:34px;min-width:160px}
+
+/* ---------- movimento ---------- */
+@keyframes kf-fade-up{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:none}}
+@keyframes kf-cut-in{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes kf-wipe{from{opacity:1;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+@keyframes kf-card-up{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:none}}
+@keyframes kf-mono-in{from{opacity:0;clip-path:inset(0 0 100% 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes kf-plate-in{from{opacity:0;clip-path:inset(100% 0 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes kf-step-in{from{opacity:0;transform:translate3d(-14px,0,0)}to{opacity:1;transform:none}}
+@keyframes kf-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+[data-reveal]{opacity:0}
+[data-reveal].is-in{animation:kf-fade-up .66s cubic-bezier(.2,.7,.25,1) both;animation-delay:var(--d,0s)}
+[data-reveal="cut"].is-in{animation-name:kf-cut-in;animation-duration:.34s;animation-timing-function:steps(4,end)}
+[data-reveal="wipe"].is-in{animation-name:kf-wipe;animation-duration:.7s}
+[data-reveal="card"].is-in{animation-name:kf-card-up;animation-duration:.58s}
+[data-reveal="mono"].is-in{animation-name:kf-mono-in;animation-duration:.5s}
+[data-reveal="plate"].is-in{animation-name:kf-plate-in;animation-duration:.8s}
+[data-reveal="step"].is-in{animation-name:kf-step-in;animation-duration:.55s}
+.breathe{animation:kf-breathe 3.4s ease-in-out 1.2s infinite}
+
+@media (prefers-reduced-motion:reduce){
+  [data-reveal],[data-reveal].is-in{opacity:1;animation:none!important;clip-path:none!important;transform:none!important}
+  .breathe{animation:none}
+  *{transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- breakpoints ---------- */
+@media (min-width:600px){
+  :root{--gut:32px}
+  .hero h1{font-size:58px}
+  .sec-title{font-size:40px}
+  .final h2{font-size:38px}
+  .ficha-head{grid-template-columns:repeat(3,1fr);gap:0}
+  .ficha-head div{border-bottom:0;border-right:1px solid rgba(124,129,135,.22);padding:14px 18px 14px 0}
+  .ficha-head div:last-child{border-right:0}
+  .opts{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:980px){
+  :root{--gut:48px}
+  .hero h1{font-size:78px}
+  .sec-title{font-size:52px}
+  .final h2{font-size:48px}
+  .hero__inner{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+  .hero__shot{margin-top:0}
+  .bio{grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+  .block-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .block-grid .block + .block{margin-top:0}
+}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+</head>
+<body>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <div class="wrap">
+      <div class="hero__inner">
+        <div>
+          <p class="mono hero__kicker" data-reveal="mono">Consultoria online · Caldas Novas / GO</p>
+          <h1 data-reveal>Sua melhor versão.<span class="hl">Sem mimimi.</span></h1>
+          <div class="rule" data-reveal="wipe" style="--d:.2s"></div>
+          <p class="hero__sub" data-reveal style="--d:.1s">Consultoria online com protocolo personalizado, por um atleta de Classic Physique formado em Educação Física.<!-- VALIDAR: formado ou cursando? CREF? --></p>
+          <p class="mono hero__spec" data-reveal="mono" style="--d:.18s">Treino · Dieta orientada · Ajustes contínuos <!-- SUBSTITUIR: confirmar entregas reais -->(confirmar entregas)</p>
+          <p class="hero__cta" data-reveal style="--d:.26s">
+            <a class="btn breathe" href="https://wa.me/" data-wa="geral">Começar minha consultoria</a>
+          </p>
+        </div>
+        <figure class="hero__shot" data-reveal="plate" style="--d:.3s">
+          <div class="shot">
+            <img src="img/brenno-palco.jpg" width="480" height="640" alt="Brenno Vinicius em pose no palco, durante competição de Classic Physique." fetchpriority="high" decoding="async">
+          </div>
+          <figcaption class="shot-cap">Brenno em competição<!-- VALIDAR: evento, federação e ano desta foto para legendar corretamente --></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 — PRA QUEM É ============ -->
+  <section id="pra-quem-e">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num" data-reveal="cut" style="--d:.18s">01</span>
+        <h2 class="sec-title" data-reveal>Pra quem é</h2>
+      </header>
+
+      <dl class="ficha-head" data-reveal="mono">
+        <div><dt>Aluno</dt><dd>Preencher abaixo</dd></div>
+        <div><dt>Objetivo</dt><dd>Marque o seu</dd></div>
+        <div><dt>Frequência</dt><dd>Definida na avaliação</dd></div>
+      </dl>
+
+      <p class="mono lbl" style="padding:22px 0 6px" data-reveal="mono">Marque a opção que te descreve hoje</p>
+
+      <div class="opts">
+        <a class="opt" href="https://wa.me/" data-wa="comecando" data-reveal="card">
+          <span class="opt__row"><span class="opt__box"></span><span class="opt__code">Opção A</span></span>
+          <h3>Começando agora</h3>
+          <p>Nunca treinou direito e não sabe por onde começar.</p>
+          <span class="opt__go">Marcar e falar no WhatsApp</span>
+        </a>
+        <a class="opt" href="https://wa.me/" data-wa="parado" data-reveal="card" style="--d:.1s">
+          <span class="opt__row"><span class="opt__box"></span><span class="opt__code">Opção B</span></span>
+          <h3>Treina e não sai do lugar</h3>
+          <p>Treina há meses sem evolução visível e já pensou: será que essa parada de academia é pra mim?</p>
+          <span class="opt__go">Marcar e falar no WhatsApp</span>
+        </a>
+        <a class="opt" href="https://wa.me/" data-wa="nivel" data-reveal="card" style="--d:.2s">
+          <span class="opt__row"><span class="opt__box"></span><span class="opt__code">Opção C</span></span>
+          <h3>Quer subir de nível</h3>
+          <p>Já tem base e quer shape de atleta ou palco.</p>
+          <span class="opt__go">Marcar e falar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 — O PROTOCOLO ============ -->
+  <section id="protocolo">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num" data-reveal="cut" style="--d:.18s">02</span>
+        <h2 class="sec-title" data-reveal>O protocolo</h2>
+      </header>
+
+      <div class="block-grid">
+        <div class="block" data-reveal="card">
+          <p class="mono lbl">O que o acompanhamento inclui</p>
+          <!-- SUBSTITUIR: entregas reais (avaliação, protocolo de treino, orientação alimentar?, frequência de ajustes, canal de contato, app ou planilha) — levantar com o Brenno -->
+          <ul class="list" style="margin-top:14px">
+            <li>Avaliação inicial <!-- SUBSTITUIR: como é feita, o que é pedido --></li>
+            <li>Protocolo de treino individual <!-- SUBSTITUIR: formato de entrega --></li>
+            <li>Orientação alimentar <!-- VALIDAR: entra ou não? quem assina? --></li>
+            <li>Ajustes periódicos <!-- SUBSTITUIR: frequência real --></li>
+            <li>Canal de contato direto <!-- SUBSTITUIR: WhatsApp? app? planilha? --></li>
+          </ul>
+        </div>
+        <div class="block" data-reveal="card" style="--d:.1s">
+          <p class="mono lbl">Como o protocolo é montado</p>
+          <p style="margin-top:14px;color:var(--alca)">O ponto de partida é o seu: tempo de treino, rotina, academia disponível e objetivo. A ficha sai depois da avaliação, não antes.</p>
+          <p class="mono honest">Protocolo individual. O que funciona pro seu colega de treino pode não funcionar pra você.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 — QUEM MONTA A SUA FICHA ============ -->
+  <section id="quem">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num" data-reveal="cut" style="--d:.18s">03</span>
+        <h2 class="sec-title" data-reveal>Quem monta a sua ficha</h2>
+      </header>
+
+      <div class="bio">
+        <figure data-reveal="plate">
+          <div class="shot shot--treino">
+            <img src="img/brenno-treino.jpg" width="480" height="640" alt="Brenno Vinicius de costas, em pose de bíceps duplo, na academia." loading="lazy" decoding="async">
+          </div>
+          <figcaption class="shot-cap">Treino<!-- VALIDAR: foi na CT Arena Fitness? Se sim, legendar "Treino na CT Arena Fitness, Caldas Novas" --></figcaption>
+        </figure>
+        <div>
+          <dl class="ficha-head" data-reveal="mono">
+            <div><dt>Nome</dt><dd>Brenno Vinicius</dd></div>
+            <div><dt>Categoria</dt><dd>Classic Physique</dd></div>
+            <div><dt>Base</dt><dd>Caldas Novas / GO</dd></div>
+          </dl>
+          <div data-reveal style="margin-top:22px;--d:.08s">
+            <p>Atleta de Classic Physique<!-- VALIDAR: cartel, federação, competições dos destaques e colocações. Sem confirmação, não citar resultado. --> e profissional de Educação Física<!-- VALIDAR: formação concluída ou em curso? número do CREF? -->.</p>
+            <p>Treina na CT Arena Fitness, em Caldas Novas.<!-- VALIDAR: citar a academia no site? --></p>
+            <p>A consultoria segue a mesma linha do treino dele: protocolo, execução e ajuste. Sem atalho e sem promessa de prazo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — COMO FUNCIONA ============ -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num" data-reveal="cut" style="--d:.18s">04</span>
+        <h2 class="sec-title" data-reveal>Como funciona</h2>
+      </header>
+
+      <div class="steps">
+        <div class="step" data-reveal="step">
+          <span class="step__n">Passo 01</span>
+          <h3>Chama no WhatsApp</h3>
+          <p>Você conta onde está hoje e o que quer. A conversa define se faz sentido começar.<!-- SUBSTITUIR: o que o Brenno pergunta nessa etapa --></p>
+        </div>
+        <div class="step" data-reveal="step" style="--d:.1s">
+          <span class="step__n">Passo 02</span>
+          <h3>Avaliação e montagem</h3>
+          <p>Avaliação e montagem do protocolo individual.<!-- SUBSTITUIR: o que é pedido (fotos? medidas? histórico?) e prazo real de entrega --></p>
+        </div>
+        <div class="step" data-reveal="step" style="--d:.2s">
+          <span class="step__n">Passo 03</span>
+          <h3>Acompanhamento</h3>
+          <p>Treino executado, retorno e ajuste do protocolo ao longo do caminho.<!-- SUBSTITUIR: frequência de ajuste e formato do retorno --></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALIDAR: SEÇÃO RESULTADOS NÃO ENTROU — sem material confirmado. Fotos de evolução do próprio Brenno e de alunos COM autorização escrita. Com material, a seção entra aqui e o FAQ volta a ser 06. -->
+
+  <!-- ============ 05 — FAQ ============ -->
+  <section id="faq">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num" data-reveal="cut" style="--d:.18s">05</span>
+        <h2 class="sec-title" data-reveal>Perguntas</h2>
+      </header>
+
+      <div class="faq" data-reveal="card">
+        <details>
+          <summary>Preciso competir pra fazer a consultoria?</summary>
+          <p>Não. O protocolo é montado pelo seu objetivo, e competir é só um deles.</p>
+        </details>
+        <details>
+          <summary>Atende só quem é de Caldas Novas?</summary>
+          <p>A consultoria é online.<!-- VALIDAR: existe atendimento presencial na CT Arena? --></p>
+        </details>
+        <details>
+          <summary>Quanto custa?</summary>
+          <p>O valor é tratado na conversa, depois de entender o seu caso.<!-- SUBSTITUIR: se houver tabela de preço definida, informar aqui --></p>
+        </details>
+        <details>
+          <summary>Já treino com a ficha da academia. Qual a diferença?</summary>
+          <p>Ficha de academia é um treino padrão. Aqui o protocolo é individual e tem acompanhamento: ele muda conforme você responde.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="final" id="comecar">
+    <div class="wrap inner">
+      <h2 data-reveal>O protocolo começa com uma conversa.</h2>
+      <p class="mono" data-reveal="mono" style="--d:.1s">Sem formulário. Sem espera.</p>
+      <p data-reveal style="--d:.18s">
+        <a class="btn btn--dark" href="https://wa.me/" data-wa="geral">Falar com o Brenno</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot__brand" data-reveal="mono">Brenno Fidelis · Consultoria online</p>
+    <p class="foot__links">
+      <a href="https://www.instagram.com/brennofidelis_/" target="_blank" rel="noopener">Instagram @brennofidelis_</a>
+    </p>
+    <p class="foot__legal">
+      <!-- SUBSTITUIR: CREF quando confirmado — exibir "CREF 000000-G/GO" -->
+      <!-- VALIDAR: número do CREF e registro ativo -->
+      Caldas Novas / GO
+    </p>
+    <p class="foot__credit">
+      <a href="https://www.instagram.com/baruc.amare/" target="_blank" rel="noopener" class="site-credit">feito por @baruc.amare</a>
+    </p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Brenno Vinicius",
+  "alternateName":"Brenno Fidelis",
+  "jobTitle":"Consultor de treinamento e atleta de Classic Physique",
+  "description":"Consultoria online com protocolo de treino personalizado.",
+  "address":{"@type":"PostalAddress","addressLocality":"Caldas Novas","addressRegion":"GO","addressCountry":"BR"},
+  "sameAs":["https://www.instagram.com/brennofidelis_/"]
+}
+</script>
+
+<script>
+/* ================= CONFIG ================= */
+var CONFIG = {
+  /* SUBSTITUIR: número do WhatsApp do Brenno com DDI+DDD, só dígitos. Ex.: "5564999999999" */
+  whatsapp: "",
+  mensagens: {
+    geral:     "Oi, Brenno! Vim pelo site e quero começar a consultoria online.",
+    comecando: "Oi, Brenno! Vim pelo site. Marquei a opção A: estou começando agora e não sei por onde começar.",
+    parado:    "Oi, Brenno! Vim pelo site. Marquei a opção B: treino há meses e não saio do lugar.",
+    nivel:     "Oi, Brenno! Vim pelo site. Marquei a opção C: já tenho base e quero subir de nível."
+  }
+};
+/* =============== FIM CONFIG =============== */
+
+(function () {
+  function waLink(chave) {
+    var msg = CONFIG.mensagens[chave] || CONFIG.mensagens.geral || "";
+    return "https://wa.me/" + (CONFIG.whatsapp || "") + (msg ? "?text=" + encodeURIComponent(msg) : "");
+  }
+
+  function aplicarCtas() {
+    var alvos = document.querySelectorAll("[data-wa]");
+    for (var i = 0; i < alvos.length; i++) {
+      alvos[i].setAttribute("href", waLink(alvos[i].getAttribute("data-wa")));
+      alvos[i].setAttribute("target", "_blank");
+      alvos[i].setAttribute("rel", "noopener");
+    }
+  }
+
+  function revelar() {
+    var itens = document.querySelectorAll("[data-reveal]");
+    var mostrarTudo = function () {
+      for (var i = 0; i < itens.length; i++) itens[i].classList.add("is-in");
+    };
+
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      mostrarTudo();
+      return;
+    }
+    if (!("IntersectionObserver" in window)) {
+      mostrarTudo();
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entradas) {
+      for (var i = 0; i < entradas.length; i++) {
+        if (entradas[i].isIntersecting) {
+          entradas[i].target.classList.add("is-in");
+          obs.unobserve(entradas[i].target);
+        }
+      }
+    }, { threshold: 0.05, rootMargin: "0px 0px -15% 0px" });
+
+    for (var j = 0; j < itens.length; j++) obs.observe(itens[j]);
+
+    setTimeout(mostrarTudo, 3000);
+  }
+
+  aplicarCtas();
+  revelar();
+})();
+</script>
+
+</body>
+</html>
